@@ -1,0 +1,14 @@
+*.cache
+.DS_Store
+.idea
+nbproject
+/var
+/vendor
+/packages/*
+
+/public/*
+
+# Don't manage DDEVs .gitignore manually
+.ddev/.gitignore
+
+config/system/settings.php
