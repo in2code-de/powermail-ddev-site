@@ -1,7 +1,7 @@
 name: powermail-ddev-site
 type: typo3
 docroot: public
-php_version: "8.3"
+php_version: "8.2"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
@@ -16,6 +16,19 @@ timezone: UTC
 composer_version: "2"
 web_environment: []
 corepack_enable: false
+hooks:
+  # create folders for solr and tika data, for using them as volumes for docker containers
+  pre-start:
+    - exec-host: ./.ddev/commands/host/clone powermail
+  post-start:
+    - exec: composer tests:setup
+    # setup system cron and run TYPO3 Scheduler tasks with ENV variables provided by ddev.
+    - exec:
+        sudo service cron start && {
+        env --unset=_ --unset=TERM --unset=LS_COLORS | grep -v -e '=$' ;
+        echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3 scheduler:run';
+        } | crontab -
+
 
 # Key features of DDEV's config.yaml:
 

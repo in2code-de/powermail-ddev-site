@@ -1,0 +1,33 @@
+base: 'https://powermail-ddev-site.ddev.site/'
+languages:
+  -
+    title: English
+    enabled: true
+    languageId: 0
+    base: /
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: English
+    hreflang: en-US
+    direction: ''
+    flag: us
+    solr_core_read: core_en
+  -
+    title: German
+    enabled: true
+    languageId: 2
+    base: /de/
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ''
+    fallbackType: fallback
+    fallbacks: '1,0'
+    flag: de
+    solr_core_read: core_de
+    websiteTitle: 'EXT:powermail Entwicklungspaket'
+rootPageId: 1
+websiteTitle: 'EXT:powermail development package'

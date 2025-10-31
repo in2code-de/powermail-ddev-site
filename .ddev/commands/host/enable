@@ -1,0 +1,50 @@
+#!/bin/bash
+
+## Description: Enables the EXT:Powermail* plugin (Note: Pro- and EXT:Powermail plugins must exist in packages/ext-<powermail-plugin-name>)
+## Usage: powermail:enable <powermail-plugin-name>
+## Example: ddev powermail:enable powermail-pro
+
+
+
+EXT_NAME=$1
+LOCAL_EXT_POWERMAIL_PLUGIN_PATH="packages/ext-$EXT_NAME"
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+if [[ ! -d "packages/introduction_""$EXT_NAME" ]]; then
+  echo "The integration for $EXT_NAME extension does not exists."
+  echo "Please provide a pull request for this extension by adding a extension"
+  exit 1;
+fi
+
+if [[ -d "$LOCAL_EXT_POWERMAIL_PLUGIN_PATH"  ]]; then
+  LOCAL_EXT_POWERMAIL_PLUGIN="in2code/$EXT_NAME:@dev"
+  echo ""
+  echo "Installing $LOCAL_EXT_POWERMAIL_PLUGIN from $LOCAL_EXT_POWERMAIL_PLUGIN_PATH local path,"
+  echo "  since composer does not allow to require @dev local libraries recursively."
+  echo "Please don't push the composer.json and composer.lock with activated EXT:powermail plugins in powermail-ddev-site repository."
+fi
+
+# shellcheck disable=SC2086
+if ! ddev composer req "in2code/introduction-$EXT_NAME:@dev" $LOCAL_EXT_POWERMAIL_PLUGIN ; then
+  EXECUTED_COMMAND="composer req \"in2code/introduction-$EXT_NAME:@dev\" $LOCAL_EXT_POWERMAIL_PLUGIN"
+  echo "Something went wrong by following composer command:"
+  echo "    "$EXECUTED_COMMAND
+  echo "please check the output from above."
+  exit 1;
+fi
+
+IMPEXP_EXTENDED_SCRIPT="./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+if [[ -x "$IMPEXP_EXTENDED_SCRIPT" ]]; then
+  echo ""
+  echo "Running $IMPEXP_EXTENDED_SCRIPT, to import the things not covered by impexp extension."
+  ddev exec -s "web" "./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+fi
+
+BELONGING_DOCKER_COMPOSE_SERVICE_FILE="./packages/introduction_$EXT_NAME/docker-compose.$EXT_NAME.yaml"
+if [[ -f "$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ]] && [[ ! -f ".ddev/docker-compose.$EXT_NAME.yaml" ]]; then
+  ln -s ".$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ".ddev/docker-compose.$EXT_NAME.yaml"
+  echo -e "\n${RED}The EXT:$EXT_NAME requires additional Docker service. The ddev will be restarted to start the services for EXT:$EXT_NAME. ${NC} \n"
+  ddev restart
+fi

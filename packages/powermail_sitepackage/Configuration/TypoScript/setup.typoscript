@@ -1,0 +1,17 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap5/setup.typoscript'
+
+page {
+  includeCSS {
+    bootstrap-icons = EXT:powermail_sitepackage/Resources/Public/Fonts/bootstrap-icons.css
+  }
+}
+
+@import './Extensions/powermail/setup.typoscript'
+
+# Bugfix bootstrap_package "address" tag
+# See: https://github.com/benjaminkott/bootstrap_package/commit/926733682291e5c0147cf263d530424ea7a47a9f#commitcomment-97499240
+lib.parseFunc_RTE.externalBlocks.address < lib.parseFunc_RTE.externalBlocks.div

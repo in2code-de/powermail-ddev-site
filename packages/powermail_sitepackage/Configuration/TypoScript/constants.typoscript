@@ -1,0 +1,86 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap5/constants.typoscript'
+@import './Extensions/powermail/constants.typoscript'
+@import './Extensions/powermail/constants.typoscript'
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        height = 52
+        width = 192
+        alt = Powermail Sitepackage
+        linktitle = Powermail Sitepackage
+    }
+    favicon {
+        file = EXT:powermail_sitepackage/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:powermail_sitepackage/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:powermail_sitepackage/Resources/Private/Partials/Page/
+        templateRootPath = EXT:powermail_sitepackage/Resources/Private/Templates/Page/
+    }
+
+  theme {
+    navigation.type = top
+    meta.enable = 0
+
+    socialmedia.channels {
+      github.url = https://github.com/in2code-de/
+      youtube.url = https://www.youtube.com/@in2code
+    }
+
+    cookieconsent.position = bottom-right
+  }
+
+  preloader {
+    backgroundColor = #03A9F4
+    logo.file = EXT:powermail_sitepackage/Resources/Public/Images/logo-inverted.svg
+  }
+}
+
+[tree.level === 0]
+page.theme.navigation.style = default-transition
+[end]
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:powermail_sitepackage/Resources/Private/Layouts/
+        partialRootPath = EXT:powermail_sitepackage/Resources/Private/Partials/
+        templateRootPath = EXT:powermail_sitepackage/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:powermail_sitepackage/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:powermail_sitepackage/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:powermail_sitepackage/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+  primary = #0288D1
+  secondary = #FFEB3B
+  breadcrumb-bg = #FFEB3B
+  cookieconsent-bg = #F2F2F2
+  footer-sections = (content:(background: #0288D1, color: #ffffff, link-color: #FFEB3B), meta:(background: #ffffff, color: $body-color, link-color: #0288D1))
+}
+

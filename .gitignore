@@ -5,6 +5,7 @@ nbproject
 /var
 /vendor
 /packages/*
+!/packages/powermail_sitepackage
 
 /public/*
 

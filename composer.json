@@ -1,0 +1,72 @@
+{
+  "name": "in2code/powermail-dev-distribution",
+  "description": "TYPO3 CMS Base Distribution for EXT:powermail* development and testing.",
+  "license": "GPL-2.0-or-later",
+  "type": "project",
+  "repositories": {
+    "local-project": {
+      "type": "path",
+      "url": "packages/*",
+      "options": {
+        "reference": "none",
+        "versions": {
+          "in2code/powermail":                   "13.0",
+          "in2code/powermail-sitepackage":       "13.0"
+        }
+      }
+    }
+  },
+  "config": {
+    "allow-plugins": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "sort-packages": true,
+    "preferred-install": {
+      "typo3/cms-core": "source",
+      "*": "dist"
+    }
+  },
+  "require": {
+    "ext-dom": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
+    "ext-pdo": "*",
+    "ext-simplexml": "*",
+    "bk2k/bootstrap-package": "^15.0.0",
+    "helhum/typo3-console": "~8.2.2",
+    "in2code/powermail": "13.0",
+    "in2code/powermail-sitepackage": "13.0",
+    "typo3/cms-core": "^13.4"
+  },
+  "require-dev": {
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TYPO3\\CMS\\Core\\Tests\\":"vendor/typo3/cms-core/Tests"
+    }
+  },
+  "scripts-descriptions": {
+  },
+  "scripts": {
+    "typo3-cms-scripts": [
+      "[ -f ./config/system/settings.php ] || typo3 setup --no-interaction --driver=${TYPO3_INSTALL_DB_DRIVER} --username=${TYPO3_INSTALL_DB_USER} --password=${TYPO3_INSTALL_DB_PASSWORD} --host=${TYPO3_INSTALL_DB_HOST} --port=${TYPO3_INSTALL_DB_PORT} --dbname=${TYPO3_INSTALL_DB_DBNAME} --admin-username=${TYPO3_INSTALL_ADMIN_USER} --admin-email=\"info@typo3.org\" --admin-user-password=${TYPO3_INSTALL_ADMIN_PASSWORD} --project-name=\"EXT:powermail dev environment\" --server-type=\"other\"",
+      "typo3 extension:setup",
+      "typo3 cache:flush"
+    ],
+    "sitepackage-scripts": [
+      "composer run setup -d ./packages/powermail_sitepackage"
+    ],
+    "post-autoload-dump": [
+      "@typo3-cms-scripts",
+      "@sitepackage-scripts"
+    ],
+    "tests:env": [
+      "if [ -z ${TYPO3_VERSION+x} ]; then >&2 echo \"Can not proceed, because env var TYPO3_VERSION is not set\"; exit 1; else echo \"Setup test environment for TYPO3 ${TYPO3_VERSION}\"; fi",
+      "if echo $TYPO3_VERSION | grep -q \"dev\"; then $COMPOSER_BINARY config minimum-stability dev; fi"
+    ],
+    "tests:setup": [
+      "@composer install"
+    ]
+  }
+}
