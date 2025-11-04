@@ -29,5 +29,5 @@ languages:
     fallbacks: '0'
     direction: ''
     flag: us
-rootPageId: 1
+rootPageId: 52
 websiteTitle: 'EXT:powermail development package'
