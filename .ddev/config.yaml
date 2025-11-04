@@ -17,11 +17,9 @@ composer_version: "2"
 web_environment: []
 corepack_enable: false
 hooks:
-  # create folders for solr and tika data, for using them as volumes for docker containers
   pre-start:
     - exec-host: ./.ddev/commands/host/clone powermail
   post-start:
-    - exec: composer tests:setup
     # setup system cron and run TYPO3 Scheduler tasks with ENV variables provided by ddev.
     - exec:
         sudo service cron start && {
