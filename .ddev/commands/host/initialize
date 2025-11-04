@@ -6,6 +6,8 @@
 
 CURRENT_BRANCH=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
 
+# ToDo: Refine, what happens if directory/ branch for download does not exist
+
 echo "Fetching and importing database"
 curl https://www.in2code.de/extensions/downloads/powermail-ddev-site/$CURRENT_BRANCH/db.tar.gz -o .project/data/db.sql.gz
 ddev import-db --file=.project/data/db.sql.gz
