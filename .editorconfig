@@ -18,8 +18,8 @@ indent_size = 2
 
 # JSON-Files
 [*.json]
-indent_style = space
-indent_size = 2
+indent_style = tab
+
 # ReST-Files
 [*.{rst,rst.txt}]
 indent_size = 4
@@ -45,6 +45,10 @@ indent_style = space
 
 # stylelint
 [.stylelintrc]
+indent_size = 2
+
+# package.json
+[package.json]
 indent_size = 2
 
 # TypoScript

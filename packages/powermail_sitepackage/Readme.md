@@ -1,4 +1,4 @@
-Sitepackage for the project "Apache Solr for TYPO3 Sitepackage"
+Sitepackage for the project "Powermail DEV Sitepackage"
 ==============================================================
 
 Add some explanation here.

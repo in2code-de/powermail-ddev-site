@@ -6,14 +6,7 @@
   "repositories": {
     "local-project": {
       "type": "path",
-      "url": "packages/*",
-      "options": {
-        "reference": "none",
-        "versions": {
-          "in2code/powermail":                   "13.0",
-          "in2code/powermail-sitepackage":       "13.0"
-        }
-      }
+      "url": "packages/*"
     }
   },
   "config": {
@@ -35,8 +28,8 @@
     "ext-simplexml": "*",
     "bk2k/bootstrap-package": "^15.0.0",
     "helhum/typo3-console": "~8.2.2",
-    "in2code/powermail": "13.0",
-    "in2code/powermail-sitepackage": "13.0",
+    "in2code/powermail": "13.0 || dev-master",
+    "in2code/powermail-sitepackage": "13.0 || @dev",
     "typo3/cms-core": "^13.4"
   },
   "require-dev": {

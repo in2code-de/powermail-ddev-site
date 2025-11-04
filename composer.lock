@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d192e547c0acfa6ee01d787a7b2c5b3",
+    "content-hash": "c46e1a6d19007b5821acf6e0b9f24acb",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1546,10 +1546,11 @@
         },
         {
             "name": "in2code/powermail",
-            "version": "13.0",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "packages/ext-powermail"
+                "url": "packages/ext-powermail",
+                "reference": "04579efe2041a334326f20dd9dca0e730add0ec3"
             },
             "require": {
                 "ext-curl": "*",
@@ -1692,10 +1693,11 @@
         },
         {
             "name": "in2code/powermail-sitepackage",
-            "version": "13.0",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
-                "url": "packages/powermail_sitepackage"
+                "url": "packages/powermail_sitepackage",
+                "reference": "b1ebadba62e577d39d7cdcdcec841fe532ef746f"
             },
             "require": {
                 "typo3/cms-about": "*",
@@ -8097,7 +8099,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "in2code/powermail": 20,
+        "in2code/powermail-sitepackage": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

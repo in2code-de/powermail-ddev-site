@@ -1,4 +1,6 @@
 base: 'https://powermail-ddev-site.ddev.site/'
+dependencies:
+  - bootstrap-package/full
 languages:
   -
     title: English
@@ -12,11 +14,10 @@ languages:
     hreflang: en-US
     direction: ''
     flag: us
-    solr_core_read: core_en
   -
     title: German
     enabled: true
-    languageId: 2
+    languageId: 1
     base: /de/
     typo3Language: de
     locale: de_DE.UTF-8
@@ -27,7 +28,6 @@ languages:
     fallbackType: fallback
     fallbacks: '1,0'
     flag: de
-    solr_core_read: core_de
     websiteTitle: 'EXT:powermail Entwicklungspaket'
 rootPageId: 1
 websiteTitle: 'EXT:powermail development package'

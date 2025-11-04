@@ -8,6 +8,17 @@ page {
   includeCSS {
     bootstrap-icons = EXT:powermail_sitepackage/Resources/Public/Fonts/bootstrap-icons.css
   }
+
+  10 {
+    dataProcessing {
+      10 {
+        levels = 1
+      }
+      20 {
+        levels = 4
+      }
+    }
+  }
 }
 
 @import './Extensions/powermail/setup.typoscript'
