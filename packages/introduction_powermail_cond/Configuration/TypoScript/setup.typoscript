@@ -1,0 +1,11 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:powermail_cond/Configuration/TypoScript/setup.typoscript'
+
+##############
+#### MODS ####
+##############
+
+
+

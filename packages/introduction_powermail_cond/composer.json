@@ -1,0 +1,16 @@
+{
+	"name": "in2code/introduction-powermail_cond",
+	"type": "typo3-cms-extension",
+	"description": "Powermail development site : Powermail Cond",
+	"homepage": "http://www.in2code.de.de/",
+	"license": ["GPL-2.0-or-later"],
+	"keywords": ["TYPO3 CMS"],
+	"require": {
+		"in2code/powermail": "^13.0 || @dev"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "introduction_news"
+		}
+	}
+}

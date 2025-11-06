@@ -6,6 +6,7 @@ nbproject
 /vendor
 /packages/*
 !/packages/powermail_sitepackage
+!/packages/introduction_powermail_cond
 
 /public/*
 
