@@ -38,7 +38,7 @@ fi
 if ! cd "$previous_pwd"; then >&2 echo "Something went wrong by switching to working directory \"$previous_pwd\"" exit 1; fi
 
 if ! [[ "$EXT_POWERMAIL_PLUGIN_NAME" == "powermail" ]]; then
-  # Try to enable the EXT:Solr plugin introduction package integration extension, to fully setup the plugin.
+  # Try to enable the EXT:powermail plugin introduction package integration extension, to fully setup the plugin.
   if [[ -d "packages/introduction_$EXT_POWERMAIL_PLUGIN_NAME" ]]; then
     ddev powermail:enable $EXT_POWERMAIL_PLUGIN_NAME
   else
